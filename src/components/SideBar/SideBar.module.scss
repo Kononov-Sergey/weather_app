@@ -1,5 +1,57 @@
 .aside {
-  background-color: #1e213a;
-  width: 459px;
+  background-color: rgb(30, 33, 58);
+  max-width: 459px;
   height: 100vh;
+  transition: all 0.2s ease-in;
+  position: relative;
+  z-index: 1;
+  padding: 0 42px;
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/Cloud-background.png");
+    background-position: -112px 103px;
+    opacity: 0.5;
+    background-repeat: no-repeat;
+  }
+}
+
+.btn-secction {
+  padding-top: 42px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 109px;
+}
+
+button:first-child {
+  margin-right: 166px;
+}
+
+img {
+  display: block;
+  margin: 0 auto 88px;
+}
+
+.temp {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  * {
+    margin: 0;
+  }
+  h1 {
+    display: block;
+    font-size: 144px;
+  }
+  h2 {
+    display: block;
+    font-size: 48px;
+    color: rgb(160, 159, 177);
+    margin-bottom: 23px;
+  }
 }

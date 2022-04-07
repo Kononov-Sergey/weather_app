@@ -1,16 +1,31 @@
 .btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 54px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  &:hover {
+    transform: scale(1.1);
+  }
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
 }
 .gray {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgb(110, 110, 120);
+  &:hover {
+    background: rgb(150, 150, 160);
+  }
 }
 
 .switch_light {
-  background: #e7e7eb;
+  background: rgb(230, 230, 235);
 }
 .switch_dark {
-  background: #585676;
+  background: rgb(90, 85, 115);
 }

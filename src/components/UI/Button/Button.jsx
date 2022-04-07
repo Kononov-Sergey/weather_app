@@ -3,7 +3,10 @@ import classes from "./Button.module.scss";
 
 function Button({ onClick, type, children }) {
   return (
-    <button className={classes.type} onClick={onClick}>
+    <button
+      className={`${type ? classes.type : classes.gray} ${classes.btn}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
