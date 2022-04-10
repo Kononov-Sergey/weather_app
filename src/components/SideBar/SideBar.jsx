@@ -19,14 +19,15 @@ function SideBar() {
         <h1>15</h1>
         <h2>°С</h2>
       </div>
-      <h2 className={classes.weather}></h2>
-      <div className={classes.day}>
-        <h3></h3>
+      <h2 className={classes.weather}>Shower</h2>
+      <div className={classes["day-container"]}>
+        <h3>Today</h3>
         <p>·</p>
-        <h3></h3>
+        <h3>Fri, 5 Jun</h3>
       </div>
       <h3 className={classes.locaion}>
-        <span class="material-icons">location_on</span>
+        <span className="material-icons">location_on</span>
+        Helsinki
       </h3>
     </aside>
   );

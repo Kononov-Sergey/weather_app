@@ -1,7 +1,8 @@
 .aside {
   background-color: rgb(30, 33, 58);
+  text-align: center;
   max-width: 459px;
-  height: 100vh;
+  min-height: 100vh;
   transition: all 0.2s ease-in;
   position: relative;
   z-index: 1;
@@ -19,6 +20,10 @@
     opacity: 0.5;
     background-repeat: no-repeat;
   }
+  img {
+    display: block;
+    margin: 0 auto 88px;
+  }
 }
 
 .btn-secction {
@@ -26,21 +31,16 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 109px;
-}
-
-button:first-child {
-  margin-right: 166px;
-}
-
-img {
-  display: block;
-  margin: 0 auto 88px;
+  button:first-child {
+    margin-right: 166px;
+  }
 }
 
 .temp {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-bottom: 77px;
   * {
     margin: 0;
   }
@@ -53,5 +53,21 @@ img {
     font-size: 48px;
     color: rgb(160, 159, 177);
     margin-bottom: 23px;
+  }
+}
+
+.weather {
+  color: rgb(160, 159, 177);
+  font-weight: 600;
+  font-size: 36px;
+}
+
+.day-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  * {
+    font-size: 18px;
+    color: rgb(136, 134, 157);
   }
 }
