@@ -1,0 +1,16 @@
+.wide_card {
+  text-align: center;
+  background-color: #1e213a;
+  width: 328px;
+  min-height: 160px;
+  padding: 22px 0px;
+  h3 {
+    font-size: 16px;
+    color: rgb(231, 231, 235);
+    margin: 0;
+  }
+}
+.content {
+  display: flex;
+  justify-content: center;
+}

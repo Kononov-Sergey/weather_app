@@ -1,6 +1,6 @@
 .btn {
-  min-width: 40px;
-  min-height: 40px;
+  width: 40px;
+  height: 40px;
   border-radius: 50px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   transition: all 0.2s ease-in-out;
@@ -17,15 +17,18 @@
   }
 }
 .gray {
-  background: rgb(110, 110, 120);
+  background-color: rgb(110, 110, 120);
   &:hover {
-    background: rgb(150, 150, 160);
+    background-color: rgb(150, 150, 160);
   }
 }
 
 .switch_light {
-  background: rgb(230, 230, 235);
+  background-color: rgb(230, 230, 235);
+  * {
+    color: rgb(17, 14, 60);
+  }
 }
 .switch_dark {
-  background: rgb(90, 85, 115);
+  background-color: rgb(90, 85, 115);
 }

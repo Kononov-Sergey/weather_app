@@ -1,5 +1,12 @@
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 459px 1fr;
+}
+.main-container {
+  padding-top: 42px;
+  width: 100%;
+  max-width: 710px;
+  margin: 0 auto;
 }

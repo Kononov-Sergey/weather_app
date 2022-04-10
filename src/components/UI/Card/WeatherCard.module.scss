@@ -1,11 +1,14 @@
 .card {
-  padding: 18px 22px;
+  padding-top: 18px;
   background-color: rgb(30, 33, 58);
   text-align: center;
+  width: 120px;
+  height: 177px;
   h3 {
     font-size: 16px;
     color: #e7e7eb;
     margin-bottom: 10px;
+    margin-top: 0;
   }
   img {
     width: 56px;
