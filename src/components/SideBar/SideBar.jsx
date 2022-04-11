@@ -1,15 +1,25 @@
+import { useState } from "react";
+
 import classes from "./SideBar.module.scss";
 
 import Shower from "../../assets/Shower.png";
 
 import Button from "../UI/Button/Button";
 import ButtonCircle from "../UI/Button/ButtonCircle";
+import SideBarMenu from "./SideBarMenu";
 
 function SideBar() {
+  const [menuIsShown, setMenuIsShown] = useState(false);
+  const onMenuToggle = () => {
+    setMenuIsShown((state) => !state);
+  };
   return (
     <aside className={classes.aside}>
+      <div className={`${classes.menu} ${menuIsShown && classes.shown}`}>
+        <SideBarMenu toggleMenu={onMenuToggle} />
+      </div>
       <div className={classes["btn-secction"]}>
-        <Button>Search for places</Button>
+        <Button onClick={onMenuToggle}>Search for places</Button>
         <ButtonCircle>
           <span className="material-icons-outlined">my_location</span>
         </ButtonCircle>

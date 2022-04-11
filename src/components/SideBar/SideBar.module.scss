@@ -4,6 +4,7 @@
   max-width: 459px;
   min-height: 100vh;
   transition: all 0.2s ease-in;
+  overflow-y: hidden;
   position: relative;
   z-index: 1;
   padding: 0 42px;
@@ -21,6 +22,7 @@
     opacity: 0.5;
     background-repeat: no-repeat;
   }
+
   img {
     display: block;
     margin: 0 auto 88px;
@@ -72,5 +74,19 @@
   * {
     font-size: 18px;
     color: rgb(136, 134, 157);
+  }
+}
+
+.menu {
+  position: absolute;
+  max-width: 459px;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  top: -1100px;
+  left: 0;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  &.shown {
+    top: 0;
   }
 }

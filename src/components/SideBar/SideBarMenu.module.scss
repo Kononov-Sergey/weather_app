@@ -1,0 +1,37 @@
+.aside {
+  background-color: #3f4368;
+  padding: 82px 47px 20px 20px;
+  height: 100%;
+  position: relative;
+  & > span {
+    position: absolute;
+    font-size: 24px;
+    padding: 3px;
+    top: 20px;
+    right: 53px;
+    cursor: pointer;
+  }
+}
+
+.top-content {
+  display: flex;
+  justify-content: space-between;
+}
+.search {
+  border: 1px solid rgb(231, 231, 235);
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 48px;
+    &::placeholder {
+      color: #616475;
+    }
+  }
+  span {
+    color: #616475;
+  }
+}
