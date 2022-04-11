@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { usePosition } from "../../hooks/use-position";
 
 import classes from "./SideBar.module.scss";
 
@@ -7,12 +9,22 @@ import Shower from "../../assets/Shower.png";
 import Button from "../UI/Button/Button";
 import ButtonCircle from "../UI/Button/ButtonCircle";
 import SideBarMenu from "./SideBarMenu";
+import { getFullLocaion } from "../../store/positionReducer";
 
 function SideBar() {
+  const dispatch = useDispatch();
   const [menuIsShown, setMenuIsShown] = useState(false);
+  const { latitude, longitude, error } = usePosition();
+  const city = useSelector((state) => state.position.city);
+
   const onMenuToggle = () => {
     setMenuIsShown((state) => !state);
   };
+
+  const getLocationHandler = () => {
+    dispatch(getFullLocaion(latitude, longitude));
+  };
+
   return (
     <aside className={classes.aside}>
       <div className={`${classes.menu} ${menuIsShown && classes.shown}`}>
@@ -20,7 +32,7 @@ function SideBar() {
       </div>
       <div className={classes["btn-secction"]}>
         <Button onClick={onMenuToggle}>Search for places</Button>
-        <ButtonCircle>
+        <ButtonCircle onClick={getLocationHandler}>
           <span className="material-icons-outlined">my_location</span>
         </ButtonCircle>
       </div>
@@ -37,7 +49,7 @@ function SideBar() {
       </div>
       <h3 className={classes.locaion}>
         <span className="material-icons">location_on</span>
-        Helsinki
+        {city}
       </h3>
     </aside>
   );
