@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 
 export const usePosition = () => {
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
+  const [position, setPosition] = useState({ latitude: null, longitude: null });
   const [status, setStatus] = useState(null);
 
   useEffect(() => {
@@ -12,9 +11,11 @@ export const usePosition = () => {
       setStatus("Locating...");
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setStatus(null);
-          setLat(position.coords.latitude);
-          setLng(position.coords.longitude);
+          setStatus("Completed");
+          setPosition({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
         },
         () => {
           setStatus("Unable to retrieve your location");
@@ -23,5 +24,5 @@ export const usePosition = () => {
     }
   }, []);
 
-  return { latitude: lat, longitude: lng, status };
+  return { latitude: position.latitude, longitude: position.longitude, status };
 };

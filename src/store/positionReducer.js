@@ -3,18 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const positionSlice = createSlice({
   name: "positionReducer",
   initialState: {
-    latitude: undefined,
-    longitude: undefined,
-    woeid: undefined,
-    city: undefined,
+    data: [],
+    currentCity: 0,
   },
   reducers: {
     setFullLocaion(state, action) {
-      const { latitude, longitude, woeid, city } = action.payload;
-      state.latitude = latitude;
-      state.longitude = longitude;
-      state.woeid = woeid;
-      state.city = city;
+      if (action.payload.city && state.currentCity !== action.payload.city) {
+        state.currentCity = action.payload.city;
+      }
+      state.data = action.payload;
     },
   },
 });
@@ -27,11 +24,7 @@ export const getFullLocaion = (latitude, longitude) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        const [latitude, longitude] = data[0].latt_long.split(",");
-        const { woeid, city } = data[0];
-        dispath(
-          positionAction.setFullLocaion({ woeid, city, latitude, longitude })
-        );
+        dispath(positionAction.setFullLocaion(data));
       });
   };
 };
