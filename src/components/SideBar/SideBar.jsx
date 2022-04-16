@@ -4,8 +4,6 @@ import { usePosition } from "../../hooks/use-position";
 
 import classes from "./SideBar.module.scss";
 
-import Shower from "../../assets/Shower.png";
-
 import Button from "../UI/Button/Button";
 import ButtonCircle from "../UI/Button/ButtonCircle";
 import SideBarMenu from "./SideBarMenu";
@@ -15,7 +13,7 @@ import { getFullLocaion } from "../../store/positionReducer";
 import { getFullWeatherInfo } from "../../store/weatherReducer";
 import {
   getCurrentCity,
-  getFullData,
+  getFullLocationData,
   getTodayWeather,
 } from "../../store/selectors";
 
@@ -218,23 +216,15 @@ function SideBar() {
   const { latitude, longitude, status } = usePosition();
 
   const cityNumber = useSelector(getCurrentCity);
-  const data = useSelector(getFullData);
+  const data = useSelector(getFullLocationData);
   const weatherInfo = useSelector(getTodayWeather);
 
-  useEffect(() => {
-    if (Object.keys(weatherInfo).length > 0) {
-      console.log(weatherInfo);
-      currentTemperature = weatherInfo.the_temp.toFixed(0);
-      weatherState = weatherInfo.weather_state_name;
-      date = new Date(weatherInfo.created);
-      weekDayName = weekdayArray[date.getDay()];
-      dayNumder = weekdayArray[date.getDate()];
-      month = monthArray[date.getMonth()];
-      console.log(currentTemperature);
-    }
-  }, [weatherInfo]);
+  const makeWeatherImg = (weatherState) => {
+    const img = require(`../../assets/${weatherState}.png`);
+    return <img className={classes.img} src={img} alt="weather" />;
+  };
 
-  const onMenuToggle = () => {
+  const onMenuToggleHandler = () => {
     setMenuIsShown((state) => !state);
   };
 
@@ -245,24 +235,35 @@ function SideBar() {
 
   useEffect(() => {
     if (status === "Completed") {
-      dispatch(getFullLocaion(latitude, longitude));
+      // dispatch(getFullLocaion(latitude, longitude));
     }
   }, [latitude, longitude]);
 
   useEffect(() => {
     if (data.length > 0) {
       const woeid = data[cityNumber].woeid;
-      dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
+      // dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
     }
   }, [cityNumber, data]);
+
+  useEffect(() => {
+    if (Object.keys(weatherInfo).length > 0) {
+      currentTemperature = weatherInfo.the_temp.toFixed(0);
+      weatherState = weatherInfo.weather_state_name;
+      date = new Date(weatherInfo.created);
+      weekDayName = weekdayArray[date.getDay() - 1];
+      dayNumder = date.getDate();
+      month = monthArray[date.getMonth()];
+    }
+  }, [weatherInfo]);
 
   return (
     <aside className={classes.aside}>
       <div className={`${classes.menu} ${menuIsShown && classes.shown}`}>
-        <SideBarMenu toggleMenu={onMenuToggle} />
+        <SideBarMenu toggleMenu={onMenuToggleHandler} />
       </div>
       <div className={classes["btn-secction"]}>
-        <Button disabled={isLoading} onClick={onMenuToggle}>
+        <Button disabled={isLoading} onClick={onMenuToggleHandler}>
           Search for places
         </Button>
         <ButtonCircle disabled={isLoading} onClick={getLocationHandler}>
@@ -273,7 +274,7 @@ function SideBar() {
         <Loader />
       ) : (
         <>
-          <img className={classes.img} src={Shower} alt="" />
+          {makeWeatherImg(weatherState)}
           <div className={classes.temp}>
             <h1>{currentTemperature}</h1>
             <h2>°С</h2>
@@ -286,7 +287,7 @@ function SideBar() {
           </div>
           <h3 className={classes.locaion}>
             <span className="material-icons">location_on</span>
-            {"ggg"}
+            {data[cityNumber].title}
           </h3>
         </>
       )}
