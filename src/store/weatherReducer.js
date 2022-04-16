@@ -26,7 +26,7 @@ export const getFullWeatherInfo = (woeid, currentCity, isLoadingFunc) => {
         console.log(data);
         dispath(
           weatherActions.setWeatherInfo({
-            consolidated_weather: data,
+            consolidated_weather: data.consolidated_weather,
             currentCity: currentCity,
           })
         );

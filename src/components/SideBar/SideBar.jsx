@@ -9,10 +9,15 @@ import Shower from "../../assets/Shower.png";
 import Button from "../UI/Button/Button";
 import ButtonCircle from "../UI/Button/ButtonCircle";
 import SideBarMenu from "./SideBarMenu";
-import { getFullLocaion } from "../../store/positionReducer";
-import { getCurrentCity, getFullData } from "../../store/selectors";
-import { getFullWeatherInfo } from "../../store/weatherReducer";
 import Loader from "../UI/Loader/Loader";
+
+import { getFullLocaion } from "../../store/positionReducer";
+import { getFullWeatherInfo } from "../../store/weatherReducer";
+import {
+  getCurrentCity,
+  getFullData,
+  getTodayWeather,
+} from "../../store/selectors";
 
 const dummy_data = {
   consolidated_weather: [
@@ -180,6 +185,32 @@ const dummy_data = {
   timezone: "Europe/Moscow",
 };
 
+const weekdayArray = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+
+const monthArray = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+let currentTemperature, weatherState, date, weekDayName, dayNumder, month;
+
 function SideBar() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
@@ -188,6 +219,20 @@ function SideBar() {
 
   const cityNumber = useSelector(getCurrentCity);
   const data = useSelector(getFullData);
+  const weatherInfo = useSelector(getTodayWeather);
+
+  useEffect(() => {
+    if (Object.keys(weatherInfo).length > 0) {
+      console.log(weatherInfo);
+      currentTemperature = weatherInfo.the_temp.toFixed(0);
+      weatherState = weatherInfo.weather_state_name;
+      date = new Date(weatherInfo.created);
+      weekDayName = weekdayArray[date.getDay()];
+      dayNumder = weekdayArray[date.getDate()];
+      month = monthArray[date.getMonth()];
+      console.log(currentTemperature);
+    }
+  }, [weatherInfo]);
 
   const onMenuToggle = () => {
     setMenuIsShown((state) => !state);
@@ -195,21 +240,21 @@ function SideBar() {
 
   const getLocationHandler = () => {
     setIsLoading(true);
-    // dispatch(getFullLocaion(latitude, longitude));
+    dispatch(getFullLocaion(latitude, longitude));
   };
 
   useEffect(() => {
     if (status === "Completed") {
-      // dispatch(getFullLocaion(latitude, longitude));
+      dispatch(getFullLocaion(latitude, longitude));
     }
   }, [latitude, longitude]);
 
   useEffect(() => {
     if (data.length > 0) {
       const woeid = data[cityNumber].woeid;
-      // dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
+      dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
     }
-  }, [cityNumber, data, dispatch]);
+  }, [cityNumber, data]);
 
   return (
     <aside className={classes.aside}>
@@ -230,14 +275,14 @@ function SideBar() {
         <>
           <img className={classes.img} src={Shower} alt="" />
           <div className={classes.temp}>
-            <h1>15</h1>
+            <h1>{currentTemperature}</h1>
             <h2>°С</h2>
           </div>
-          <h2 className={classes.weather}>Shower</h2>
+          <h2 className={classes.weather}>{weatherState}</h2>
           <div className={classes["day-container"]}>
             <h3>Today</h3>
             <p>·</p>
-            <h3>Fri, 5 Jun</h3>
+            <h3>{`${weekDayName}, ${dayNumder} ${month}`}</h3>
           </div>
           <h3 className={classes.locaion}>
             <span className="material-icons">location_on</span>
