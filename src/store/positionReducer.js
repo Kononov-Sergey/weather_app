@@ -6,6 +6,7 @@ const positionSlice = createSlice({
     data: [],
     currentCity: 0,
   },
+
   reducers: {
     setFullLocaion(state, action) {
       if (action.payload.city && state.currentCity !== action.payload.city) {

@@ -22,3 +22,12 @@
     background: rgb(150, 150, 160);
   }
 }
+.disabled {
+  cursor: not-allowed;
+  background: rgb(150, 150, 160);
+  box-shadow: none;
+  &:hover {
+    transform: none;
+    background: rgb(150, 150, 160);
+  }
+}

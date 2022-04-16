@@ -32,3 +32,13 @@
 .switch_dark {
   background-color: rgb(90, 85, 115);
 }
+
+.disabled {
+  background-color: rgb(150, 150, 160);
+  box-shadow: none;
+  cursor: not-allowed;
+  &:hover {
+    background-color: rgb(150, 150, 160);
+    transform: none;
+  }
+}

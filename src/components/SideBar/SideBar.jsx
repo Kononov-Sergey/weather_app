@@ -10,6 +10,9 @@ import Button from "../UI/Button/Button";
 import ButtonCircle from "../UI/Button/ButtonCircle";
 import SideBarMenu from "./SideBarMenu";
 import { getFullLocaion } from "../../store/positionReducer";
+import { getCurrentCity, getFullData } from "../../store/selectors";
+import { getFullWeatherInfo } from "../../store/weatherReducer";
+import Loader from "../UI/Loader/Loader";
 
 const dummy_data = {
   consolidated_weather: [
@@ -179,20 +182,20 @@ const dummy_data = {
 
 function SideBar() {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
   const [menuIsShown, setMenuIsShown] = useState(false);
   const { latitude, longitude, status } = usePosition();
 
-  const city = useSelector((state) => state.position.city);
-  const woied = useSelector((state) => state.position.woeid);
+  const cityNumber = useSelector(getCurrentCity);
+  const data = useSelector(getFullData);
 
   const onMenuToggle = () => {
     setMenuIsShown((state) => !state);
   };
 
   const getLocationHandler = () => {
-    if (!city) {
-      dispatch(getFullLocaion(latitude, longitude));
-    }
+    setIsLoading(true);
+    // dispatch(getFullLocaion(latitude, longitude));
   };
 
   useEffect(() => {
@@ -201,7 +204,12 @@ function SideBar() {
     }
   }, [latitude, longitude]);
 
-  useEffect(() => {}, [woied]);
+  useEffect(() => {
+    if (data.length > 0) {
+      const woeid = data[cityNumber].woeid;
+      // dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
+    }
+  }, [cityNumber, data, dispatch]);
 
   return (
     <aside className={classes.aside}>
@@ -209,26 +217,34 @@ function SideBar() {
         <SideBarMenu toggleMenu={onMenuToggle} />
       </div>
       <div className={classes["btn-secction"]}>
-        <Button onClick={onMenuToggle}>Search for places</Button>
-        <ButtonCircle onClick={getLocationHandler}>
+        <Button disabled={isLoading} onClick={onMenuToggle}>
+          Search for places
+        </Button>
+        <ButtonCircle disabled={isLoading} onClick={getLocationHandler}>
           <span className="material-icons-outlined">my_location</span>
         </ButtonCircle>
       </div>
-      <img className={classes.img} src={Shower} alt="" />
-      <div className={classes.temp}>
-        <h1>15</h1>
-        <h2>°С</h2>
-      </div>
-      <h2 className={classes.weather}>Shower</h2>
-      <div className={classes["day-container"]}>
-        <h3>Today</h3>
-        <p>·</p>
-        <h3>Fri, 5 Jun</h3>
-      </div>
-      <h3 className={classes.locaion}>
-        <span className="material-icons">location_on</span>
-        {city}
-      </h3>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <img className={classes.img} src={Shower} alt="" />
+          <div className={classes.temp}>
+            <h1>15</h1>
+            <h2>°С</h2>
+          </div>
+          <h2 className={classes.weather}>Shower</h2>
+          <div className={classes["day-container"]}>
+            <h3>Today</h3>
+            <p>·</p>
+            <h3>Fri, 5 Jun</h3>
+          </div>
+          <h3 className={classes.locaion}>
+            <span className="material-icons">location_on</span>
+            {"ggg"}
+          </h3>
+        </>
+      )}
     </aside>
   );
 }

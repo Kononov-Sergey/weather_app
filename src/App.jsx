@@ -12,14 +12,12 @@ function App() {
       <SideBar />
       <div className={classes["main-container"]}>
         <MainHeader />
-      </div>
 
-      <main>
         {/* <WeatherCard date="Tomorrow" img={shower} dayTemp={16} nightTemp={11} />
         <CardWide title="Wind status">
           <h1>Content</h1>
         </CardWide> */}
-      </main>
+      </div>
     </div>
   );
 }

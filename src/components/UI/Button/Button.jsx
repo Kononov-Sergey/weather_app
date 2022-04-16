@@ -1,10 +1,13 @@
 import React from "react";
 import classes from "./Button.module.scss";
 
-function Button({ onClick, type, children }) {
+function Button({ onClick, type, children, disabled }) {
   return (
     <button
-      className={`${type ? classes[type] : classes.gray} ${classes.btn}`}
+      disabled={disabled}
+      className={`${type ? classes[type] : classes.gray} ${classes.btn} ${
+        disabled && classes.disabled
+      }`}
       onClick={onClick}
     >
       {children}
