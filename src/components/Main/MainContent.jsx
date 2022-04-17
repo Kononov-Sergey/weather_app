@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getHightlights } from "../../store/selectors";
 import CardWide from "../UI/Card/CardWide";
-import PercentageScale from "./Interface/PercentageScale";
 
 import classes from "./MainContent.module.scss";
 
@@ -18,22 +17,37 @@ const dummy_data = {
 function MainContent() {
   const hightlights = useSelector(getHightlights);
   return (
-    <article>
+    <article className={classes.article}>
       <h1>Today's Hightlights</h1>
       <div className={classes["card-wrapper"]}>
-        <CardWide title={"Wind status"}>
-          <div className={classes["top-content"]}>
-            <h1>{(dummy_data.wind_speed * 0.44704).toFixed(0)}</h1>
-            <p>meters per second</p>
-          </div>
-          <div className={classes["bottom-content"]}>
-            {/* <div>
-              <span className="material-icons">near_me</span>
-            </div>
-            <p>{dummy_data.wind_direction_compass}</p> */}
-            <PercentageScale percentages={dummy_data.humidity} />
-          </div>
-        </CardWide>
+        <CardWide
+          title={"Wind status"}
+          type="WS"
+          currentValue={dummy_data.wind_speed}
+          bottomContentValues={{
+            wind_direction_compass: dummy_data.wind_direction_compass,
+            wind_direction: dummy_data.wind_direction,
+          }}
+        />
+
+        <CardWide
+          title={"Humidity"}
+          type="H"
+          currentValue={dummy_data.humidity}
+          bottomContentValues={{ humidity: dummy_data.humidity }}
+        />
+
+        <CardWide
+          title={"Visibility"}
+          type="V"
+          currentValue={dummy_data.visibility}
+        />
+
+        <CardWide
+          title={"Air pressure"}
+          type="AP"
+          currentValue={dummy_data.air_pressure}
+        />
       </div>
     </article>
   );
