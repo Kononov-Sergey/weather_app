@@ -1,13 +1,8 @@
-import { useSelector } from "react-redux";
-import { getCurrentMeasurement } from "../store/selectors";
-
-export default function (value) {
-  const measurement = useSelector(getCurrentMeasurement);
-
-  if (measurement === "celsius") {
-    return (5 / 9) * (value - 32);
+export default function measurement(value, currentMeasurement) {
+  if (currentMeasurement === "celsius") {
+    return ((5 / 9) * (value - 32)).toFixed(0);
   }
-  if (measurement === "fahrenheit") {
-    return value;
+  if (currentMeasurement === "fahrenheit") {
+    return (+value).toFixed(0);
   }
 }

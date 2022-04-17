@@ -13,10 +13,12 @@ import { getFullLocaion, positionActions } from "../../store/positionReducer";
 import { getFullWeatherInfo, weatherActions } from "../../store/weatherReducer";
 import {
   getCurrentCity,
+  getCurrentMeasurement,
   getFullLocationData,
   getTodayWeather,
 } from "../../store/selectors";
 import makePrettyDate from "../../function/makePrettyDate";
+import measurement from "../../function/measurement";
 
 const dummy_data = {
   consolidated_weather: [
@@ -195,6 +197,9 @@ function SideBar() {
   const cityNumber = useSelector(getCurrentCity);
   const data = useSelector(getFullLocationData);
   const weatherInfo = useSelector(getTodayWeather);
+  const currentMeasurement = useSelector(getCurrentMeasurement);
+
+  const unitsOfMeasurement = currentMeasurement[0].toUpperCase();
 
   const makeWeatherImg = (weatherState) => {
     const img = require(`../../assets/${weatherState}.png`);
@@ -214,14 +219,14 @@ function SideBar() {
 
   useEffect(() => {
     if (status === "Completed") {
-      // dispatch(getFullLocaion(latitude, longitude));
+      dispatch(getFullLocaion(latitude, longitude));
     }
   }, [latitude, longitude]);
 
   useEffect(() => {
     if (data.length > 0) {
       const woeid = data[cityNumber].woeid;
-      // dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
+      dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
     }
   }, [cityNumber, data]);
 
@@ -252,8 +257,8 @@ function SideBar() {
         <>
           {makeWeatherImg(weatherState)}
           <div className={classes.temp}>
-            <h1>{currentTemperature}</h1>
-            <h2>°С</h2>
+            <h1>{measurement(currentTemperature, currentMeasurement)}</h1>
+            <h2>°{unitsOfMeasurement}</h2>
           </div>
           <h2 className={classes.weather}>{weatherState}</h2>
           <div className={classes["day-container"]}>
