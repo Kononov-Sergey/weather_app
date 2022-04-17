@@ -16,6 +16,7 @@ import {
   getFullLocationData,
   getTodayWeather,
 } from "../../store/selectors";
+import makePrettyDate from "../../function/makePrettyDate";
 
 const dummy_data = {
   consolidated_weather: [
@@ -183,31 +184,7 @@ const dummy_data = {
   timezone: "Europe/Moscow",
 };
 
-const weekdayArray = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
-const monthArray = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-let currentTemperature, weatherState, date, weekDayName, dayNumder, month;
+let currentTemperature, weatherState, date;
 
 function SideBar() {
   const dispatch = useDispatch();
@@ -235,14 +212,14 @@ function SideBar() {
 
   useEffect(() => {
     if (status === "Completed") {
-      // dispatch(getFullLocaion(latitude, longitude));
+      dispatch(getFullLocaion(latitude, longitude));
     }
   }, [latitude, longitude]);
 
   useEffect(() => {
     if (data.length > 0) {
       const woeid = data[cityNumber].woeid;
-      // dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
+      dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
     }
   }, [cityNumber, data]);
 
@@ -250,10 +227,7 @@ function SideBar() {
     if (Object.keys(weatherInfo).length > 0) {
       currentTemperature = weatherInfo.the_temp.toFixed(0);
       weatherState = weatherInfo.weather_state_name;
-      date = new Date(weatherInfo.created);
-      weekDayName = weekdayArray[date.getDay() - 1];
-      dayNumder = date.getDate();
-      month = monthArray[date.getMonth()];
+      date = makePrettyDate(weatherInfo.created);
     }
   }, [weatherInfo]);
 
@@ -283,7 +257,7 @@ function SideBar() {
           <div className={classes["day-container"]}>
             <h3>Today</h3>
             <p>·</p>
-            <h3>{`${weekDayName}, ${dayNumder} ${month}`}</h3>
+            <h3>{date}</h3>
           </div>
           <h3 className={classes.locaion}>
             <span className="material-icons">location_on</span>

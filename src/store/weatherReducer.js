@@ -5,13 +5,32 @@ const weatherSlice = createSlice({
   initialState: {
     todayWeatherInfo: {},
     forecast: [],
+    hightlights: {},
   },
   reducers: {
     setWeatherInfo(state, action) {
       const weatherArray = action.payload.consolidated_weather;
       const currentCity = action.payload.currentCity;
+      const {
+        wind_direction_compass,
+        wind_speed,
+        wind_direction,
+        humidity,
+        visibility,
+        air_pressure,
+      } = weatherArray[currentCity];
+
       state.forecast = weatherArray;
       state.todayWeatherInfo = weatherArray[currentCity];
+
+      state.hightlights = {
+        wind_direction_compass,
+        wind_speed,
+        wind_direction,
+        humidity,
+        visibility,
+        air_pressure,
+      };
     },
   },
 });

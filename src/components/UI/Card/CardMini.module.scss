@@ -2,7 +2,7 @@
   padding-top: 18px;
   background-color: rgb(30, 33, 58);
   text-align: center;
-  width: 120px;
+  min-width: 120px;
   height: 177px;
   h3 {
     font-size: 16px;
@@ -12,7 +12,9 @@
   }
   img {
     width: 56px;
-    margin-bottom: 31px;
+    height: 62px;
+    object-fit: contain;
+    margin-bottom: 32px;
   }
   .temp-info {
     display: flex;
