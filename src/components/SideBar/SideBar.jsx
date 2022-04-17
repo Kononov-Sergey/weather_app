@@ -212,14 +212,14 @@ function SideBar() {
 
   useEffect(() => {
     if (status === "Completed") {
-      dispatch(getFullLocaion(latitude, longitude));
+      // dispatch(getFullLocaion(latitude, longitude));
     }
   }, [latitude, longitude]);
 
   useEffect(() => {
     if (data.length > 0) {
       const woeid = data[cityNumber].woeid;
-      dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
+      // dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
     }
   }, [cityNumber, data]);
 

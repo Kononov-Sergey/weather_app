@@ -3,3 +3,4 @@ export const getFullLocationData = (state) => state.position.data;
 
 export const getTodayWeather = (state) => state.weatherInfo.todayWeatherInfo;
 export const getForecast = (state) => state.weatherInfo.forecast;
+export const getHightlights = (state) => state.weatherInfo.hightlights;

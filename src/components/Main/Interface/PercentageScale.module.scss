@@ -1,0 +1,32 @@
+.wrapper {
+  margin: 0 auto;
+  width: 229px;
+  p {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgb(160, 159, 177);
+  }
+}
+.number {
+  display: flex;
+  justify-content: space-between;
+}
+.scale {
+  width: 100%;
+  height: 8px;
+  background-color: #a09fb1;
+  border-radius: 50px;
+  position: relative;
+  .percentages {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: inherit;
+    border-radius: inherit;
+    background-color: #ffec65;
+  }
+}
+.percent {
+  float: right;
+}

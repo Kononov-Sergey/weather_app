@@ -5,6 +5,7 @@ import CardWide from "./components/UI/Card/CardWide";
 
 import MainHeader from "./components/Main/MainHeader";
 import MainTopContent from "./components/Main/MainTopContent";
+import MainContent from "./components/Main/MainContent";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className={classes["main-container"]}>
         <MainHeader />
         <MainTopContent />
+        <MainContent />
         {/* <WeatherCard date="Tomorrow" img={shower} dayTemp={16} nightTemp={11} />
         <CardWide title="Wind status">
           <h1>Content</h1>
