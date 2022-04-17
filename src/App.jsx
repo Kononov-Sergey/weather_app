@@ -15,6 +15,15 @@ function App() {
         <MainHeader />
         <MainTopContent />
         <MainContent />
+        <footer>
+          <p>
+            created be{" "}
+            <a href={"https://github.com/Kononov-Sergey"} target="_blank">
+              Sergei Kononov
+            </a>{" "}
+            - devChallenges.io
+          </p>
+        </footer>
         {/* <WeatherCard date="Tomorrow" img={shower} dayTemp={16} nightTemp={11} />
         <CardWide title="Wind status">
           <h1>Content</h1>

@@ -32,6 +32,11 @@ const weatherSlice = createSlice({
         air_pressure,
       };
     },
+    resetWeatherInfo(state) {
+      state.forecast = [];
+      state.hightlights = {};
+      state.todayWeatherInfo = {};
+    },
   },
 });
 

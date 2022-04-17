@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { getForecast } from "../../store/selectors";
 
 import CardMini from "../UI/Card/CardMini";
+import Loader from "../UI/Loader/Loader";
 
 import classes from "./MainTopContent.module.scss";
 
@@ -116,21 +117,25 @@ function MainTopContent() {
 
   return (
     <article className={classes["card-wrapper"]}>
-      {dunny_data.map((item, index) => {
-        if (index !== 0) {
-          const imgName = item.weather_state_name.split(" ").join("");
-          const img = require(`../../assets/${imgName}.png`);
-          return (
-            <CardMini
-              key={item.id}
-              date={item.applicable_date}
-              img={img}
-              dayTemp={item.max_temp}
-              nightTemp={item.min_temp}
-            />
-          );
-        }
-      })}
+      {forecast.length === 0 ? (
+        <Loader />
+      ) : (
+        forecast.map((item, index) => {
+          if (index !== 0) {
+            const imgName = item.weather_state_name.split(" ").join("");
+            const img = require(`../../assets/${imgName}.png`);
+            return (
+              <CardMini
+                key={item.id}
+                date={item.applicable_date}
+                img={img}
+                dayTemp={item.max_temp}
+                nightTemp={item.min_temp}
+              />
+            );
+          }
+        })
+      )}
     </article>
   );
 }

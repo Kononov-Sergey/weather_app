@@ -1,14 +1,14 @@
 import React from "react";
 import classes from "./CardWide.module.scss";
 
-import WindCompass from "../../Main/Interface/WindCompass";
-import PercentageScale from "../../Main/Interface/PercentageScale";
+import WindCompass from "../Interface/WindCompass";
+import PercentageScale from "../Interface/PercentageScale";
 const types = { WS: "WS", H: "H", V: "V", AP: "AP" };
 
 function CardWide({ title, type, currentValue, bottomContentValues }) {
   let value, valuePostfix, additionalContent;
   if (type === types.WS) {
-    value = (currentValue * 0.44704).toFixed(0);
+    value = (currentValue * 0.44704).toFixed(1);
     valuePostfix = "m/s";
     additionalContent = (
       <>

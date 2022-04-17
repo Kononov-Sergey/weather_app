@@ -14,6 +14,10 @@ const positionSlice = createSlice({
       }
       state.data = action.payload;
     },
+    resetAllInfo(state) {
+      state.currentCity = 0;
+      state.data = [];
+    },
   },
 });
 
