@@ -9,8 +9,8 @@ import ButtonCircle from "../UI/Button/ButtonCircle";
 import SideBarMenu from "./SideBarMenu";
 import Loader from "../UI/Loader/Loader";
 
-import { getFullLocaion } from "../../store/positionReducer";
-import { getFullWeatherInfo } from "../../store/weatherReducer";
+import { getFullLocaion, positionActions } from "../../store/positionReducer";
+import { getFullWeatherInfo, weatherActions } from "../../store/weatherReducer";
 import {
   getCurrentCity,
   getFullLocationData,
@@ -207,6 +207,8 @@ function SideBar() {
 
   const getLocationHandler = () => {
     setIsLoading(true);
+    dispatch(positionActions.resetAllInfo());
+    dispatch(weatherActions.resetWeatherInfo());
     dispatch(getFullLocaion(latitude, longitude));
   };
 

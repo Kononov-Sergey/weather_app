@@ -29,11 +29,11 @@ export const getFullLocaion = (latitude, longitude) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        dispath(positionAction.setFullLocaion(data));
+        dispath(positionActions.setFullLocaion(data));
       });
   };
 };
 
-export const positionAction = positionSlice.actions;
+export const positionActions = positionSlice.actions;
 
 export default positionSlice.reducer;
