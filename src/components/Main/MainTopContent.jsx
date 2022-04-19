@@ -121,19 +121,17 @@ function MainTopContent() {
         <Loader />
       ) : (
         forecast.map((item, index) => {
-          if (index !== 0) {
-            const imgName = item.weather_state_name.split(" ").join("");
-            const img = require(`../../assets/${imgName}.png`);
-            return (
-              <CardMini
-                key={item.id}
-                date={item.applicable_date}
-                img={img}
-                dayTemp={item.max_temp}
-                nightTemp={item.min_temp}
-              />
-            );
-          }
+          const imgName = item.weather_state_name.split(" ").join("");
+          const img = require(`../../assets/${imgName}.png`);
+          return (
+            <CardMini
+              key={item.id}
+              date={item.applicable_date}
+              img={img}
+              dayTemp={item.max_temp}
+              nightTemp={item.min_temp}
+            />
+          );
         })
       )}
     </article>

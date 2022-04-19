@@ -10,7 +10,7 @@ const weatherSlice = createSlice({
   reducers: {
     setWeatherInfo(state, action) {
       const weatherArray = action.payload.consolidated_weather;
-      const currentCity = action.payload.currentCity;
+      console.log(weatherArray);
       const {
         wind_direction_compass,
         wind_speed,
@@ -18,10 +18,10 @@ const weatherSlice = createSlice({
         humidity,
         visibility,
         air_pressure,
-      } = weatherArray[currentCity];
+      } = weatherArray[0];
 
-      state.forecast = weatherArray;
-      state.todayWeatherInfo = weatherArray[currentCity];
+      state.forecast = weatherArray.slice(1);
+      state.todayWeatherInfo = weatherArray[0];
 
       state.hightlights = {
         wind_direction_compass,
@@ -40,7 +40,7 @@ const weatherSlice = createSlice({
   },
 });
 
-export const getFullWeatherInfo = (woeid, currentCity, isLoadingFunc) => {
+export const getFullWeatherInfo = (woeid, isLoadingFunc) => {
   return (dispath) => {
     fetch(
       `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}`
@@ -51,7 +51,6 @@ export const getFullWeatherInfo = (woeid, currentCity, isLoadingFunc) => {
         dispath(
           weatherActions.setWeatherInfo({
             consolidated_weather: data.consolidated_weather,
-            currentCity: currentCity,
           })
         );
       })

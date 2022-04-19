@@ -202,8 +202,11 @@ function SideBar() {
   const unitsOfMeasurement = currentMeasurement[0].toUpperCase();
 
   const makeWeatherImg = (weatherState) => {
-    const img = require(`../../assets/${weatherState}.png`);
-    return <img className={classes.img} src={img} alt="weather" />;
+    if (weatherState) {
+      const weatherImg = weatherState.split(" ").join("");
+      const img = require(`../../assets/${weatherImg}.png`);
+      return <img className={classes.img} src={img} alt="weather" />;
+    }
   };
 
   const onMenuToggleHandler = () => {
@@ -225,8 +228,9 @@ function SideBar() {
 
   useEffect(() => {
     if (data.length > 0) {
+      setIsLoading(true);
       const woeid = data[cityNumber].woeid;
-      dispatch(getFullWeatherInfo(woeid, cityNumber, setIsLoading));
+      dispatch(getFullWeatherInfo(woeid, setIsLoading));
     }
   }, [cityNumber, data]);
 
@@ -251,11 +255,11 @@ function SideBar() {
           <span className="material-icons-outlined">my_location</span>
         </ButtonCircle>
       </div>
-      {isLoading ? (
+      {isLoading || Object.keys(weatherInfo).length === 0 ? (
         <Loader />
       ) : (
         <>
-          {makeWeatherImg(weatherState)}
+          {weatherState ? makeWeatherImg(weatherState) : ""}
           <div className={classes.temp}>
             <h1>{measurement(currentTemperature, currentMeasurement)}</h1>
             <h2>°{unitsOfMeasurement}</h2>

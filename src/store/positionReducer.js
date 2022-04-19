@@ -14,6 +14,9 @@ const positionSlice = createSlice({
       }
       state.data = action.payload;
     },
+    setCurrentCity(state, action) {
+      state.currentCity = action.payload.currentCityIndex;
+    },
     resetAllInfo(state) {
       state.currentCity = 0;
       state.data = [];
