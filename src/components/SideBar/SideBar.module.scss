@@ -1,0 +1,92 @@
+.aside {
+  background-color: rgb(30, 33, 58);
+  text-align: center;
+  max-width: 459px;
+  min-height: 100vh;
+  transition: all 0.2s ease-in;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 1;
+  padding: 0 42px;
+  float: left;
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/Cloud-background.png");
+    background-position: -112px 103px;
+    opacity: 0.5;
+    background-repeat: no-repeat;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto 88px;
+  }
+}
+
+.btn-secction {
+  padding-top: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 109px;
+  button:first-child {
+    margin-right: 166px;
+  }
+}
+
+.temp {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 77px;
+  * {
+    margin: 0;
+  }
+  h1 {
+    display: block;
+    font-size: 144px;
+  }
+  h2 {
+    display: block;
+    font-size: 48px;
+    color: rgb(160, 159, 177);
+    margin-bottom: 23px;
+  }
+}
+
+.weather {
+  color: rgb(160, 159, 177);
+  font-weight: 600;
+  font-size: 36px;
+}
+
+.day-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  * {
+    font-size: 18px;
+    color: rgb(136, 134, 157);
+  }
+}
+
+.menu {
+  position: absolute;
+  max-width: 459px;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  top: -1100px;
+  left: 0;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  &.shown {
+    top: 0;
+  }
+}

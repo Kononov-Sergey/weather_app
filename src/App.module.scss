@@ -1,0 +1,20 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 459px 1fr;
+}
+.main-container {
+  padding-top: 42px;
+  width: 100%;
+  max-width: 710px;
+  margin: 0 auto;
+}
+
+footer {
+  text-align: center;
+  p {
+    font-size: 14px;
+    color: #a09fb1;
+  }
+}

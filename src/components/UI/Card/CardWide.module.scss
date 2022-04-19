@@ -1,0 +1,38 @@
+.wide_card {
+  text-align: center;
+  background-color: #1e213a;
+  width: 328px;
+  min-height: 116px;
+  padding: 22px 0px;
+  h3 {
+    font-size: 16px;
+    color: rgb(231, 231, 235);
+    margin: 0;
+  }
+}
+
+.top-content {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  h1 {
+    margin: 0;
+    line-height: 75px;
+    font-size: 64px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  p {
+    font-size: 36px;
+  }
+}
+
+.bottom-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  p {
+    font-size: 14px;
+  }
+}

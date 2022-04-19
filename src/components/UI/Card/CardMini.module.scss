@@ -1,0 +1,32 @@
+.card {
+  padding-top: 18px;
+  background-color: rgb(30, 33, 58);
+  text-align: center;
+  min-width: 120px;
+  height: 177px;
+  h3 {
+    font-size: 16px;
+    color: #e7e7eb;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+  img {
+    width: 56px;
+    height: 62px;
+    object-fit: contain;
+    margin-bottom: 32px;
+  }
+  .temp-info {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    p {
+      font-size: 16px;
+      margin: 0;
+      color: #e7e7eb;
+    }
+    p:last-child {
+      color: #a09fb1;
+    }
+  }
+}
