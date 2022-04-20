@@ -10,7 +10,6 @@ const weatherSlice = createSlice({
   reducers: {
     setWeatherInfo(state, action) {
       const weatherArray = action.payload.consolidated_weather;
-      console.log(weatherArray);
       const {
         wind_direction_compass,
         wind_speed,
@@ -47,7 +46,6 @@ export const getFullWeatherInfo = (woeid, isLoadingFunc) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         dispath(
           weatherActions.setWeatherInfo({
             consolidated_weather: data.consolidated_weather,

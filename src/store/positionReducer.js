@@ -31,7 +31,6 @@ export const getFullLocaion = (latitude, longitude) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         dispath(positionActions.setFullLocaion(data));
       });
   };
