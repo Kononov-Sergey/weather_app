@@ -2,7 +2,6 @@
   "name": "weather_app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Kononov-Sergey.github.io/weather_app",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "material-design-icons": "^3.0.1",

@@ -20,6 +20,30 @@ import {
 import makePrettyDate from "../../function/makePrettyDate";
 import measurement from "../../function/measurement";
 
+import Clear from "../../assets/Clear.png";
+import Hail from "../../assets/Hail.png";
+import HeavyCloud from "../../assets/HeavyCloud.png";
+import HeavyRain from "../../assets/HeavyRain.png";
+import LightCloud from "../../assets/LightCloud.png";
+import LightRain from "../../assets/LightRain.png";
+import Showers from "../../assets/Showers.png";
+import Sleet from "../../assets/Sleet.png";
+import Snow from "../../assets/Snow.png";
+import Thunderstorm from "../../assets/Thunderstorm.png";
+
+const weatherImges = {
+  Clear,
+  Hail,
+  HeavyCloud,
+  HeavyRain,
+  LightCloud,
+  LightRain,
+  Showers,
+  Sleet,
+  Snow,
+  Thunderstorm,
+};
+
 const dummy_data = {
   consolidated_weather: [
     {
@@ -204,7 +228,7 @@ function SideBar() {
   const makeWeatherImg = (weatherState) => {
     if (weatherState) {
       const weatherImg = weatherState.split(" ").join("");
-      const img = require(`../../assets/${weatherImg}.png`);
+      const img = weatherImges[weatherImg];
       return <img className={classes.img} src={img} alt="weather" />;
     }
   };
