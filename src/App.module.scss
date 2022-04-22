@@ -3,6 +3,10 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 459px 1fr;
+  @media (max-width: 910px) {
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+  }
 }
 .main-container {
   padding-top: 42px;
@@ -13,6 +17,7 @@
 
 footer {
   text-align: center;
+  margin-bottom: 1rem;
   p {
     font-size: 14px;
     color: #a09fb1;

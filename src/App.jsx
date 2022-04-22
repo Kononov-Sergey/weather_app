@@ -17,7 +17,7 @@ function App() {
         <MainContent />
         <footer>
           <p>
-            created be{" "}
+            created by{" "}
             <a href={"https://github.com/Kononov-Sergey"} target="_blank">
               Sergei Kononov
             </a>{" "}

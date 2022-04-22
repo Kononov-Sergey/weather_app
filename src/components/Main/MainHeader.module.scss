@@ -4,4 +4,7 @@
   justify-content: end;
   gap: 12px;
   margin-bottom: 30px;
+  @media (max-width: 1220px) {
+    display: none;
+  }
 }

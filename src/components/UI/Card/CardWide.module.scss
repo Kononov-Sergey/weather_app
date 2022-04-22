@@ -9,6 +9,10 @@
     color: rgb(231, 231, 235);
     margin: 0;
   }
+  @media (max-width: 1220px) {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }
 
 .top-content {

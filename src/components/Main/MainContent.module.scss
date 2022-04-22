@@ -1,7 +1,28 @@
+.article {
+  @media (max-width: 1220px) {
+    margin: 0 1rem 50px 1rem;
+  }
+  @media (max-width: 910px) {
+    margin-bottom: 0;
+  }
+}
+
 .card-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   margin-bottom: 113px;
   min-height: 411px;
+  @media (max-width: 1220px) {
+    display: block;
+  }
+  @media (max-width: 910px) {
+    margin-bottom: 0;
+  }
+}
+
+h1 {
+  @media (max-width: 1220px) {
+    text-align: center;
+  }
 }

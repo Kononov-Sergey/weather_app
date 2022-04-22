@@ -1,5 +1,10 @@
 .card-wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 26px;
   min-height: 177px;
+  @media (max-width: 1220px) {
+    margin: 1rem;
+    justify-content: center;
+  }
 }
