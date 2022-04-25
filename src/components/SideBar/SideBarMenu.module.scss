@@ -87,8 +87,10 @@
     &:hover::before {
       transform: rotate(45deg) translateY(-4px);
     }
-    &:not(:last-child) {
-      border-bottom: 1px solid rgba(231, 231, 235, 0.5);
+    @media (max-width: 910px) {
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(231, 231, 235, 0.5);
+      }
     }
   }
 }
