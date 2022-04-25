@@ -37,12 +37,15 @@
 
 ![image](https://user-images.githubusercontent.com/76957532/164617887-2be982f9-751b-484e-b8d3-bca995cfcc37.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
+This site shows you weather information considering your current location (therefore, do not forget to give the permission of reading your location).
+It display today's weather temperature, humidity percentage, current visibility, wind information and 5 day weather forecast.
+Also you can change the units of measurement (Celcius and Fahrenheit) and change current city (now it's only 10 nearest cities to your location but global search will be added in a future)
 
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+This project allowed me to improve my skills in making SPA via React & Redux. During the prosses I ran into some problem like: CORS policy error, build error (the page can not load images in build version) also some architectural issues that related to folder stucture, components stucture (reusability, scalability), and store stucture. It was a good challeng to solve all problems and practice technical skills. 
+
+By the way, it was really interesting experience for me to build the whole project from scratch. 
+
+
 
 ### Built With
 
