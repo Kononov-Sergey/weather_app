@@ -42,7 +42,7 @@ const weatherSlice = createSlice({
 export const getFullWeatherInfo = (woeid, isLoadingFunc) => {
   return (dispath) => {
     fetch(
-      `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}`
+      `https://mycorsproxy-crossdomainyz.herokuapp.com/https://www.metaweather.com/api/location/${woeid}`
     )
       .then((res) => res.json())
       .then((data) => {

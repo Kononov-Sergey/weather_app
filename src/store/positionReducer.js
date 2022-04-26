@@ -27,7 +27,7 @@ const positionSlice = createSlice({
 export const getFullLocaion = (latitude, longitude) => {
   return (dispath) => {
     fetch(
-      `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong=${latitude},${longitude}`
+      `https://mycorsproxy-crossdomainyz.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong=${latitude},${longitude}`
     )
       .then((res) => res.json())
       .then((data) => {
