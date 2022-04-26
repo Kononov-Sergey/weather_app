@@ -29,7 +29,7 @@ import LightRain from "../../assets/LightRain.png";
 import Showers from "../../assets/Showers.png";
 import Sleet from "../../assets/Sleet.png";
 import Snow from "../../assets/Snow.png";
-import Thunderstorm from "../../assets/Thunderstorm.png";
+import Thunder from "../../assets/Thunder.png";
 
 const weatherImges = {
   Clear,
@@ -41,7 +41,7 @@ const weatherImges = {
   Showers,
   Sleet,
   Snow,
-  Thunderstorm,
+  Thunder,
 };
 
 const dummy_data = {
